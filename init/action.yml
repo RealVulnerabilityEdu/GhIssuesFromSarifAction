@@ -16,10 +16,10 @@ inputs:
     description: 'SARIF-to-GitHub issues tookkit URL'
     required: false
     default: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/ghissues/'
-  toolkit-tools:
-    description: 'SARIF-to-GitHub issues tookkit tools'
-    required: false
-    default: ['assemble_gh_issue_data.py', 'gh_issues.sh']
+  # toolkit-tools:
+  #   description: 'SARIF-to-GitHub issues tookkit tools'
+  #   required: false
+  #   default: ['assemble_gh_issue_data.py', 'gh_issues.sh']
 
 # Outputs of the action.
 outputs:
