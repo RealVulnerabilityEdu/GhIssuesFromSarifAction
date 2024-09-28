@@ -16,7 +16,7 @@ if [ -z "$INPUTS_TOOLKIT_DIRECTORY" ]; then
     exit 1
 fi
 
-if # Check if the toolkit URL is set
+# Check if the toolkit URL is set
 if [ -z "$INPUTS_TOOLKIT_URL" ]; then
     echo "::error file=download_toolkit.sh,line=21::The toolkit URL is not set"
     exit 1

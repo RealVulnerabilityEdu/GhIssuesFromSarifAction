@@ -1,0 +1,37 @@
+name: 'SARIF-to-GitHub-Issues-Action'
+description: 'Intialization for SARIF-to-GitHub-Issues-Action'
+author: '@RealWorldVulnerabilityEdu (https://realworldvulnerabilityedu.github.io)'
+
+# Inputs to the action.
+inputs:
+  toolkit-version: 'v0.001'
+    description: 'SARIF-to-GitHub issues tookkit version'
+    required: true
+    default: 'v0.001'
+  toolkit-directory: '/_s2ghi_toolkit_'
+    description: 'SARIF-to-GitHub issues tookkit directory'
+    required: false
+    default: '/_s2ghi_toolkit_'
+  toolkit-url: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/ghissues/'
+    description: 'SARIF-to-GitHub issues tookkit URL'
+    required: false
+    default: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/ghissues/'
+  toolkit-tools: ['assemble_gh_issue_data.py', 'gh_issues.sh']
+    description: 'SARIF-to-GitHub issues tookkit tools'
+    required: false
+    default: ['assemble_gh_issue_data.py', 'gh_issues.sh']
+
+# Outputs of the action.
+outputs:
+  file-list:
+    description: 'List of files in the toolkit directory'
+
+runs:
+  using: docker
+  image: Dockerfile
+  entrypoint: /download_toolkit.sh
+  env:
+    INPUTS_TOOLKIT_VERSION: ${{ inputs.toolkit-version }}
+    INPUTS_TOOLKIT_DIRECTORY: ${{ inputs.toolkit-directory }}
+    INPUTS_TOOLKIT_URL: ${{ inputs.toolkit-url }}
+    INPUTS_TOOLKIT_TOOLS: ${{ inputs.toolkit-tools }}
