@@ -28,7 +28,7 @@ outputs:
 
 runs:
   using: docker
-  image: Dockerfile
+  image: ../Dockerfile
   entrypoint: /download_toolkit.sh
   env:
     INPUTS_TOOLKIT_VERSION: ${{ inputs.toolkit-version }}
