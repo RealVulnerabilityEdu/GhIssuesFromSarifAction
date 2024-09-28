@@ -23,7 +23,7 @@ if [ -z "$INPUTS_TOOLKIT_URL" ]; then
 fi
 
 # Check if wget is installed
-if ! command -v wget &> /dev/null; then
+if ! command -v wget > /dev/null 2>&1; then
     echo "::error file=download_toolkit.sh,line=27::wget is not installed"
     exit 1
 fi
