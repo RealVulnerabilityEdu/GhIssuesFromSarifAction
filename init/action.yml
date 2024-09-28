@@ -4,19 +4,19 @@ author: '@RealWorldVulnerabilityEdu (https://realworldvulnerabilityedu.github.io
 
 # Inputs to the action.
 inputs:
-  toolkit-version: 'v0.001'
+  toolkit-version:
     description: 'SARIF-to-GitHub issues tookkit version'
     required: true
     default: 'v0.001'
-  toolkit-directory: '/_s2ghi_toolkit_'
+  toolkit-directory:
     description: 'SARIF-to-GitHub issues tookkit directory'
     required: false
     default: '/_s2ghi_toolkit_'
-  toolkit-url: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/ghissues/'
+  toolkit-url:
     description: 'SARIF-to-GitHub issues tookkit URL'
     required: false
     default: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/ghissues/'
-  toolkit-tools: ['assemble_gh_issue_data.py', 'gh_issues.sh']
+  toolkit-tools:
     description: 'SARIF-to-GitHub issues tookkit tools'
     required: false
     default: ['assemble_gh_issue_data.py', 'gh_issues.sh']
