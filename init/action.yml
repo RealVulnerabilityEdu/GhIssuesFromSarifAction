@@ -29,9 +29,9 @@ outputs:
 runs:
   using: docker
   image: ../Dockerfile
-  entrypoint: /download_toolkit.sh
+  entrypoint: download_toolkit.sh
   env:
     INPUTS_TOOLKIT_VERSION: ${{ inputs.toolkit-version }}
     INPUTS_TOOLKIT_DIRECTORY: ${{ inputs.toolkit-directory }}
     INPUTS_TOOLKIT_URL: ${{ inputs.toolkit-url }}
-    INPUTS_TOOLKIT_TOOLS: ${{ inputs.toolkit-tools }}
+    # INPUTS_TOOLKIT_TOOLS: ${{ inputs.toolkit-tools }}
