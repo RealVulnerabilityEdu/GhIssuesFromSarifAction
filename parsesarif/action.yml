@@ -23,7 +23,7 @@ outputs:
     description: 'Your run status here'
 
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - name: Set up Python for post analysis script
       uses: actions/setup-python@v5
