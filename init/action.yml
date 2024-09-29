@@ -1,4 +1,4 @@
-name: 'SARIF-to-GitHub-Issues-Action'
+name: 'SARIF-to-GitHub-Issues-Action-Init'
 description: 'Intialization for SARIF-to-GitHub-Issues-Action'
 author: '@RealWorldVulnerabilityEdu (realworldvulnerabilityedu.github.io)'
 
