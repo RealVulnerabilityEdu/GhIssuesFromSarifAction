@@ -47,8 +47,8 @@ assemble_gh_issue_data.py
 gh_issues.sh
 EOT
 
-FILE_LIST="$(ls \"${INPUTS_TOOLKIT_DIRECTORY}\")"
-echo "file_list=\"${FILE_LIST}\"" >> "$GITHUB_OUTPUT"
-echo "time=$(date)" >> "$GITHUB_OUTPUT"
+FILE_LIST=$(ls "${INPUTS_TOOLKIT_DIRECTORY}")
+echo "file_list=\"${FILE_LIST}\"" >>"$GITHUB_OUTPUT"
+echo "time=$(date)" >>"$GITHUB_OUTPUT"
 SHORT_FILE_LIST=$(ls "${INPUTS_TOOLKIT_DIRECTORY}")
 echo "::notice file=download_toolkit.sh,line=50::Downloaded the toolkit files ${SHORT_FILE_LIST} to ${INPUTS_TOOLKIT_DIRECTORY}"
