@@ -45,6 +45,6 @@ runs:
           "${{inputs.issue-data-path}}"; then
           ls -l "${{inputs.issue-data-path}}"
           echo "::set-output name=status::success"
-        else:
+        else
           echo "::set-output name=status::failure"
         fi
