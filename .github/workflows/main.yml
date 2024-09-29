@@ -5,7 +5,7 @@ permissions: read-all
 jobs:
   sarif_to_github_issues_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Creating GitHub issues from SARIF files
     permissions:
       # required for all workflows
       security-events: write
@@ -17,11 +17,14 @@ jobs:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Initialize the toolkit
+      - name: Initialize the Sarif-Files-to-GitHub-Issues toolkit
         uses: ./init
         id: init
         with:
           toolkit-version: v0.001'
       # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.init.outputs.time }}"
+      - name: Get the status
+        run: |
+          echo "The time was ${{ steps.init.outputs.time }}"
+          echo "The file list was ${{ steps.init.outputs.file-list }}"
+
