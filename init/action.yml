@@ -19,7 +19,9 @@ inputs:
   # toolkit-tools:
   #   description: 'SARIF-to-GitHub issues tookkit tools'
   #   required: false
-  #   default: ['assemble_gh_issue_data.py', 'gh_issues.sh']
+  #   default:
+  #     - assemble_gh_issue_data.py
+  #     - gh_issues.sh
 
 # Outputs of the action.
 outputs:

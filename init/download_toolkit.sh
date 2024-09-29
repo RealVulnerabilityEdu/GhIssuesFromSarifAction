@@ -34,8 +34,20 @@ if ! mkdir -p "$INPUTS_TOOLKIT_DIRECTORY"; then
 	exit 1
 fi
 
-# mkdir -p _real_word_vul_edu_
-# wget http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/ghissues/assemble_gh_issue_data.py -O _real_word_vul_edu_/assemble_gh_issue_data.py
-# wget http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/ghissues/gh_issues.sh -O _real_word_vul_edu_/gh_issues.sh
-# pwd
-# ls _real_word_vul_edu_
+while read -r FILE; do
+	FILENAME=$(basename "${FILE}")
+	TOOLKIT_FILE="${INPUTS_TOOLKIT_DIRECTORY}/${FILENAME}"
+	if ! wget "${FILE}" -O "${TOOLKIT_FILE}"; then
+		echo "::error file=download_toolkit.sh,line=39::Failed to download $FILE"
+		exit 1
+	fi
+done <<'EOT'
+assemble_gh_issue_data.py
+gh_issues.sh
+EOT
+
+FILE_LIST=$(ls "${INPUTS_TOOLKIT_DIRECTORY}")
+echo "file_list=$FILE_LIST" >>"$GITHUB_OUTPUT"
+echo "time=$(date)" >>"$GITHUB_OUTPUT"
+SHORT_FILE_LIST=$(ls "${INPUTS_TOOLKIT_DIRECTORY}")
+echo "::notice file=download_toolkit.sh,line=50::Downloaded the toolkit files ${SHORT_FILE_LIST} to ${INPUTS_TOOLKIT_DIRECTORY}"
