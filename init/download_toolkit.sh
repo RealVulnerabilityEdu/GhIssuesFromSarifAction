@@ -55,8 +55,8 @@ for FILE in "${TOOLKIT_DIRECTORY}"/*; do
 done
 
 {
-	echo "toolkit_path=${TOOLKIT_DIRECTORY}"
-	echo "file_list=${FILE_LIST}"
+	echo "toolkit-path=${TOOLKIT_DIRECTORY}"
+	echo "file-list=${FILE_LIST}"
 	echo "time=$(date)"
 } >>"$GITHUB_OUTPUT"
 

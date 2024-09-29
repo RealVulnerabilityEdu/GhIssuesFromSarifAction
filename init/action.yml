@@ -25,7 +25,7 @@ inputs:
 
 # Outputs of the action.
 outputs:
-  tookkit-path:
+  toolkit-path:
     description: 'Directory where the SARIF-to-GitHub-Issues toolkit is'
   file-list:
     description: 'List of files in the toolkit directory'
