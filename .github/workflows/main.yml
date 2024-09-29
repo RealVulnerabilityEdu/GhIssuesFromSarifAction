@@ -27,4 +27,3 @@ jobs:
         run: |
           echo "The time was ${{ steps.init.outputs.time }}"
           echo "The file list was ${{ steps.init.outputs.file-list }}"
-
