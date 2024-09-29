@@ -49,6 +49,8 @@ gh_issues.sh
 parse_sarif.sh
 EOT
 
+chmod +x "${TOOLKIT_DIRECTORY}"/*.sh
+
 FILE_LIST=""
 for FILE in "${TOOLKIT_DIRECTORY}"/*; do
 	FILE_LIST="${FILE_LIST}<${FILE}> "
@@ -60,4 +62,4 @@ done
 	echo "time=$(date)"
 } >>"$GITHUB_OUTPUT"
 
-echo "::notice file=download_toolkit.sh,line=63::Downloaded toolkit files ${FILE_LIST} to ${TOOLKIT_DIRECTORY}"
+echo "::notice file=download_toolkit.sh,line=65::Downloaded toolkit files ${FILE_LIST} to ${TOOLKIT_DIRECTORY}"
