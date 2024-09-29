@@ -36,9 +36,10 @@ fi
 
 while read -r FILE; do
 	FILENAME=$(basename "${FILE}")
+	SOURCE_FILE="${INPUTS_TOOLKIT_URL}/${FILENAME}"
 	TOOLKIT_FILE="${INPUTS_TOOLKIT_DIRECTORY}/${FILENAME}"
-	if ! wget "${FILE}" -O "${TOOLKIT_FILE}"; then
-		echo "::error file=download_toolkit.sh,line=39::Failed to download $FILE"
+	if ! wget "${SOURCE_FILE}" -O "${TOOLKIT_FILE}"; then
+		echo "::error file=download_toolkit.sh,line=39::Failed to download $SOURCE_FILE"
 		exit 1
 	fi
 done <<'EOT'
