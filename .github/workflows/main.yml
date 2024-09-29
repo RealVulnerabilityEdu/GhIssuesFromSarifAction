@@ -26,7 +26,7 @@ jobs:
       - name: Get Toolkit downloading status
         run: |
           echo "The time was ${{ steps.init.outputs.time }}"
-          echo "The file list was ${{ steps.init.outputs.file-list }}"
+          echo "The file list was ${{ steps.init.outputs.file_list }}"
 
       - name: Parse SARIF files
         uses: ./parsesarif
