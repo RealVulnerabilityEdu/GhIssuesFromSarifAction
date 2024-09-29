@@ -1906,7 +1906,7 @@
                 {
                   "physicalLocation": {
                     "artifactLocation": {
-                      "uri": "c_test.c",
+                      "uri": "tests/src/c_test.c",
                       "uriBaseId": "%SRCROOT%",
                       "index": 0
                     }
@@ -1935,7 +1935,7 @@
                 {
                   "physicalLocation": {
                     "artifactLocation": {
-                      "uri": "c_test.c",
+                      "uri": "tests/src/c_test.c",
                       "uriBaseId": "%SRCROOT%",
                       "index": 0
                     }
@@ -2086,7 +2086,7 @@
       "artifacts": [
         {
           "location": {
-            "uri": "c_test.c",
+            "uri": "tests/src/c_test.c",
             "uriBaseId": "%SRCROOT%",
             "index": 0
           }
@@ -2116,7 +2116,7 @@
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "c_test.c",
+                  "uri": "tests/src/c_test.c",
                   "uriBaseId": "%SRCROOT%",
                   "index": 0
                 },
@@ -2149,7 +2149,7 @@
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "c_test.c",
+                  "uri": "tests/src/c_test.c",
                   "uriBaseId": "%SRCROOT%",
                   "index": 0
                 },
