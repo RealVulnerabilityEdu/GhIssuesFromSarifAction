@@ -1,6 +1,6 @@
 name: 'SARIF-to-GitHub-Issues-Action'
 description: 'Intialization for SARIF-to-GitHub-Issues-Action'
-author: '@RealWorldVulnerabilityEdu (https://realworldvulnerabilityedu.github.io)'
+author: '@RealWorldVulnerabilityEdu (realworldvulnerabilityedu.github.io)'
 
 # Inputs to the action.
 inputs:
