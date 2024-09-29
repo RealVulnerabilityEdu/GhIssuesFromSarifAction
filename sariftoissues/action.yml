@@ -44,13 +44,10 @@ runs:
   using: 'composite'
   steps:
     - name: Initialize the Sarif-Files-to-GitHub-Issues toolkit
-      using: docker
-      image: ../Dockerfile
-      entrypoint: /download_toolkit.sh
-      env:
-        INPUTS_TOOLKIT_VERSION: ${{ inputs.toolkit-version }}
-        INPUTS_TOOLKIT_DIRECTORY: ${{ inputs.toolkit-path }}
-        INPUTS_TOOLKIT_URL: ${{ inputs.toolkit-url }}
+      uses: ./init
+      id: init
+      with:
+        toolkit-version: v0.001'
 
     - name: Set up Python for post analysis script
       uses: actions/setup-python@v5
