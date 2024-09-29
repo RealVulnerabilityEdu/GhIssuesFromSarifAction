@@ -8,6 +8,9 @@ inputs:
     description: 'Directory where the SARIF-to-GitHub-Issues toolkit is'
     required: true
     default: '_s2ghi_toolkit_'
+  sarif-data-path:
+    description: 'Directory where the SARIF files are'
+    default: '_s2ghi_/sarif_data' # "${{steps.codeql_analysis.outputs.sarif-output}}"
   qhelp-root:
     description: 'Root URL for QHELP'
     required: true
@@ -36,7 +39,7 @@ runs:
         if parsesarif.sh \
           "${{github.repository}}" \
           "${{github.sha}}" \
-          "${{steps.codeql_analysis.outputs.sarif-output}}" \
+          "${{inputs.sarif-data-path}}" \
           "${{inputs.toolkit-path}}" \
           "${{inputs.qhelp-root}}" \
           "${{inputs.issue-data-path}}"; then

@@ -11,7 +11,7 @@ inputs:
   toolkit-directory:
     description: 'SARIF-to-GitHub issues tookkit directory'
     required: false
-    default: '/_s2ghi_toolkit_'
+    default: '_s2ghi_toolkit_'
   toolkit-url:
     description: 'SARIF-to-GitHub issues tookkit URL'
     required: false
@@ -25,6 +25,8 @@ inputs:
 
 # Outputs of the action.
 outputs:
+  tookkit-path:
+    description: 'Directory where the SARIF-to-GitHub-Issues toolkit is'
   file-list:
     description: 'List of files in the toolkit directory'
   time:

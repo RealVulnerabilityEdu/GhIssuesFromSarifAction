@@ -23,7 +23,15 @@ jobs:
         with:
           toolkit-version: v0.001'
       # Use the output from the `hello` step
-      - name: Get the status
+      - name: Get Toolkit downloading status
         run: |
           echo "The time was ${{ steps.init.outputs.time }}"
           echo "The file list was ${{ steps.init.outputs.file-list }}"
+
+      - name: Parse SARIF files
+        uses: ./parsesarif
+        id: parsesarif
+        with:
+          sarif-data-path: '/usr/src/tests/sarif'
+          qhelp-root: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/qhelp'
+          issue-data-path: '_s2ghi_/issue_data'

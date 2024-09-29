@@ -52,6 +52,11 @@ FILE_LIST=""
 for FILE in "${INPUTS_TOOLKIT_DIRECTORY}"/*; do
 	FILE_LIST="${FILE_LIST}<$FILE> "
 done
-echo "file_list=${FILE_LIST}" >>"$GITHUB_OUTPUT"
-echo "time=$(date)" >>"$GITHUB_OUTPUT"
-echo "::notice file=download_toolkit.sh,line=50::Downloaded toolkit files ${FILE_LIST} to ${INPUTS_TOOLKIT_DIRECTORY}"
+
+{
+	echo "toolkit_path=${INPUTS_TOOLKIT_DIRECTORY}"
+	echo "file_list=${FILE_LIST}"
+	echo "time=$(date)"
+} >>"$GITHUB_OUTPUT"
+
+echo "::notice file=download_toolkit.sh,line=62::Downloaded toolkit files ${FILE_LIST} to ${INPUTS_TOOLKIT_DIRECTORY}"
