@@ -10,7 +10,8 @@ inputs:
     default: '_s2ghi_toolkit_'
   sarif-data-path:
     description: 'Directory where the SARIF files are'
-    default: '_s2ghi_/sarif_data' # "${{steps.codeql_analysis.outputs.sarif-output}}"
+    # suggest to use "${{steps.codeql_analysis.outputs.sarif-output}}"
+    default: '_s2ghi_/sarif_data'
   qhelp-root:
     description: 'Root URL for QHELP'
     required: true

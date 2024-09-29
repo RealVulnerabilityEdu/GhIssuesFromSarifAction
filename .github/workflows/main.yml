@@ -36,3 +36,13 @@ jobs:
           sarif-data-path: '${{github.workspace}}/tests/sarif'
           qhelp-root: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/qhelp'
           issue-data-path: '_s2ghi_/issue_data'
+
+      - name: Create GitHub issues from issue content
+        uses: ./ghissues
+        id: ghissues
+        with:
+          toolkit-path: ${{ steps.init.outputs.toolkit-path }}
+          issue-data-path: '_s2ghi_/issue_data'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          _SARIF2GHI_MOCKING_FOR_DEBUG_: 1
