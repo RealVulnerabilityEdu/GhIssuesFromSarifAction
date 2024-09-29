@@ -25,11 +25,13 @@ inputs:
 outputs:
   file-list:
     description: 'List of files in the toolkit directory'
+  time:
+    description: 'The time the action was executed'
 
 runs:
   using: docker
   image: ../Dockerfile
-  entrypoint: /usr/src/download_toolkit.sh
+  entrypoint: download_toolkit.sh
   env:
     INPUTS_TOOLKIT_VERSION: ${{ inputs.toolkit-version }}
     INPUTS_TOOLKIT_DIRECTORY: ${{ inputs.toolkit-directory }}
