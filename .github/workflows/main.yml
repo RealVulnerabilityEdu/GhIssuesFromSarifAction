@@ -41,7 +41,6 @@ jobs:
         uses: ./ghissues
         id: ghissues
         with:
-          toolkit-path: ${{ steps.init.outputs.toolkit-path }}
           issue-data-path: '_s2ghi_/issue_data'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
