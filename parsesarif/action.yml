@@ -36,7 +36,7 @@ runs:
     - name: Generate GH issue content
       shell: bash
       run: |
-        if parsesarif.sh \
+        if "${{inputs.toolkit-path}}/parsesarif.sh" \
           "${{github.repository}}" \
           "${{github.sha}}" \
           "${{inputs.sarif-data-path}}" \
