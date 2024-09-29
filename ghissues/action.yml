@@ -25,7 +25,7 @@ runs:
     - name: Create GH issues from issue content
       shell: bash
       run: |
-        if "${{github.workspace}}/${{inputs.toolkit-path}}/create_gh_issues.sh" \
+        if "${{github.workspace}}/${{inputs.toolkit-path}}/create_gh_issues.sh"\
             "${{ inputs.issue-data-path }}"; then
           echo "::set-output name=status::success"
         else

@@ -1,0 +1,84 @@
+name: 'SARIF-to-GitHub-Issues-Action-All-in-One'
+description: 'SARIF-to-GitHub-Issues-Action'
+author: '@RealWorldVulnerabilityEdu (realworldvulnerabilityedu.github.io)'
+
+# Inputs to the action.
+inputs:
+  toolkit-version:
+    description: 'SARIF-to-GitHub issues tookkit version'
+    required: true
+    default: 'v0.001'
+  toolkit-path:
+    description: 'SARIF-to-GitHub issues tookkit directory'
+    required: false
+    default: '_s2ghi_toolkit_'
+  toolkit-url:
+    description: 'SARIF-to-GitHub issues tookkit URL'
+    required: false
+    default: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/ghissues/'
+  sarif-data-path:
+    description: 'Directory where the SARIF files are'
+    required: true
+    default: '_s2ghi_/sarif_data'
+  qhelp-root:
+    description: 'Root URL for QHELP'
+    required: true
+    default: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/qhelp'
+  issue-data-path:
+    description: 'Directory where the output issue data will be'
+    required: true
+    default: '_s2ghi_/issue_data'
+
+# Outputs of the action.
+outputs:
+  toolkit-path:
+    description: 'Directory where the SARIF-to-GitHub-Issues toolkit is'
+  file-list:
+    description: 'List of files in the toolkit directory'
+  time:
+    description: 'The time the action was executed'
+  status:
+    description: 'Your run status here'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Initialize the Sarif-Files-to-GitHub-Issues toolkit
+      using: docker
+      image: ../Dockerfile
+      entrypoint: /download_toolkit.sh
+      env:
+        INPUTS_TOOLKIT_VERSION: ${{ inputs.toolkit-version }}
+        INPUTS_TOOLKIT_DIRECTORY: ${{ inputs.toolkit-path }}
+        INPUTS_TOOLKIT_URL: ${{ inputs.toolkit-url }}
+
+    - name: Set up Python for post analysis script
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Generate GH issue content
+      shell: bash
+      run: |
+        if "${{github.workspace}}/${{inputs.toolkit-path}}/parse_sarif.sh" \
+          "${{github.repository}}" \
+          "${{github.sha}}" \
+          "${{inputs.sarif-data-path}}" \
+          "${{inputs.toolkit-path}}" \
+          "${{inputs.qhelp-root}}" \
+          "${{inputs.issue-data-path}}"; then
+          ls -l "${{inputs.issue-data-path}}"
+          echo "::set-output name=status::success"
+        else
+          echo "::set-output name=status::failure"
+        fi
+
+    - name: Create GH issues from issue content
+      shell: bash
+      run: |
+        if "${{github.workspace}}/${{inputs.toolkit-path}}/create_gh_issues.sh" \
+            "${{ inputs.issue-data-path }}"; then
+          echo "::set-output name=status::success"
+        else
+          echo "::set-output name=status::failure"
+        fi
