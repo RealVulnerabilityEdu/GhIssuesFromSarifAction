@@ -46,6 +46,7 @@ while read -r FILE; do
 done <<'EOT'
 assemble_gh_issue_data.py
 gh_issues.sh
+create_gh_issues.sh
 parse_sarif.sh
 EOT
 
