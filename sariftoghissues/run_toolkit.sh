@@ -65,12 +65,13 @@ done
 	echo "download-status=success"
 } >>"$GITHUB_OUTPUT"
 
-echo "::notice file=run_toolkit.sh,line=67::Downloaded toolkit files ${FILE_LIST} to ${TOOLKIT_PATH}"
+echo "::notice file=run_toolkit.sh,line=68::Downloaded toolkit files ${FILE_LIST} to ${TOOLKIT_PATH}"
 
 # Parse Sarif files
-echo "::notice file=run_toolkit.sh,line=3::INPUTS_TOOLKIT_VERSION='$INPUTS_TOOLKIT_VERSION'"
-echo "::notice file=run_toolkit.sh,line=4::INPUTS_TOOLKIT_PATH='$INPUTS_TOOLKIT_PATH'"
-echo "::notice file=run_toolkit.sh,line=5::INPUTS_TOOLKIT_URL='$INPUTS_TOOLKIT_URL'"
+echo "::notice file=run_toolkit.sh,line=71::runing '${TOOLKIT_PATH}/parse_sarif.sh'"
+echo "::notice file=run_toolkit.sh,line=72::INPUTS_TOOLKIT_VERSION='$INPUTS_TOOLKIT_VERSION'"
+echo "::notice file=run_toolkit.sh,line=73::INPUTS_TOOLKIT_PATH='$INPUTS_TOOLKIT_PATH'"
+echo "::notice file=run_toolkit.sh,line=74::INPUTS_TOOLKIT_URL='$INPUTS_TOOLKIT_URL'"
 if "${TOOLKIT_PATH}/parse_sarif.sh" \
 	"${REPOSITORY}" \
 	"${SHA}" \
@@ -89,15 +90,15 @@ else
 		echo "parse-sarif-staus=failure"
 	} >>"$GITHUB_OUTPUT"
 fi
+echo "::notice file=run_toolkit.sh,line=93::completed '${TOOLKIT_PATH}/parse_sarif.sh'"
 
 # create issues
 if [ -n "${_SARIF2GHI_MOCKING_FOR_DEBUG_}" ]; then
 	echo "Mocking create issues due to _SARIF2GHI_MOCKING_FOR_DEBUG_=${_SARIF2GHI_MOCKING_FOR_DEBUG_}"
 fi
-ls -l "${TOOLKIT_PATH}"
-ls -l "${TOOLKIT_PATH}/create_gh_issues.sh" 
-bash --version
-which bash
+echo "::notice file=run_toolkit.sh,line=99::runing '${TOOLKIT_PATH}/create_gh_issues.sh'"
+echo "::notice file=run_toolkit.sh,line=100::TOOLKIT_PATH='$TOOLKIT_PATH'"
+echo "::notice file=run_toolkit.sh,line=101::INPUTS_ISSUE_DATA_PATH='$INPUTS_ISSUE_DATA_PATH'"
 if "${TOOLKIT_PATH}/create_gh_issues.sh" \
 	"${INPUTS_ISSUE_DATA_PATH}"; then
 	{
@@ -110,5 +111,7 @@ else
 		echo "create-issue-staus=failure"
 	} >>"$GITHUB_OUTPUT"
 fi
+echo "::notice file=run_toolkit.sh,line=114::completed '${TOOLKIT_PATH}/parse_sarif.sh'"
 
 echo "time=$(date)" >>"$GITHUB_OUTPUT"
+echo "::notice file=run_toolkit.sh,line=117::all done"
