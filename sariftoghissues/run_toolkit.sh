@@ -95,7 +95,7 @@ if [ -n "${_SARIF2GHI_MOCKING_FOR_DEBUG_}" ]; then
 	echo "Mocking create issues due to _SARIF2GHI_MOCKING_FOR_DEBUG_=${_SARIF2GHI_MOCKING_FOR_DEBUG_}"
 fi
 ls -l "${TOOLKIT_PATH}"
-ls -l ${TOOLKIT_PATH}/create_gh_issues.sh" 
+ls -l "${TOOLKIT_PATH}/create_gh_issues.sh" 
 bash --version
 which bash
 if "${TOOLKIT_PATH}/create_gh_issues.sh" \
