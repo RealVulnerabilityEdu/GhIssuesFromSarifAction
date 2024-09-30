@@ -36,7 +36,7 @@ runs:
 
     - name: Generate GH issue content
       shell: bash
-      run: !
+      run: |
         pwd
         parsesarif/parse_sarif.sh
 

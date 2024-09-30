@@ -47,7 +47,7 @@ jobs:
           _SARIF2GHI_MOCKING_FOR_DEBUG_: 1
   sarif_to_github_issues_job_all_in_one:
     runs-on: ubuntu-latest
-    name: Creating GitHub issues from SARIF files
+    name: Creating GitHub issues from SARIF files All in One
     permissions:
       # required for all workflows
       security-events: write
