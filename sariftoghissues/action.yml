@@ -28,6 +28,12 @@ inputs:
     description: 'Directory where the output issue data will be'
     required: false
     default: '_s2ghi_/issue_data'
+  repository:
+    description: 'Repository name (ower/reponame)'
+    required: true
+  sha:
+    description: 'SHA of the commit the SAST tool was run on'
+    required: true
 
 # Outputs of the action.
 outputs:
@@ -47,9 +53,8 @@ runs:
     INPUTS_TOOLKIT_PATH: ${{ inputs.toolkit-path }}
     INPUTS_TOOLKIT_URL: ${{ inputs.toolkit-url }}
     INPUTS_TOOLKIT_TOOLS: ${{ inputs.toolkit-tools }}
-    REPOSITORY: ${{ github.repository }}
-    SHA: ${{ github.sha }}
+    INPUTS_REPOSITORY: ${{ inputs.repository }}
+    INPUTS_SHA: ${{ inputs.sha }}
     INPUTS_SARIF_DATA_PATH: ${{ inputs.sarif-data-path }}
     INPUTS_QHELP_ROOT: ${{ inputs.qhelp-root }}
     INPUTS_ISSUE_DATA_PATH: ${{ inputs.issue-data-path }}
-

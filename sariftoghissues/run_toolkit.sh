@@ -67,7 +67,6 @@ done
 
 echo "::notice file=run_toolkit.sh,line=67::Downloaded toolkit files ${FILE_LIST} to ${TOOLKIT_PATH}"
 
-
 # Parse Sarif files
 echo "::notice file=run_toolkit.sh,line=3::INPUTS_TOOLKIT_VERSION='$INPUTS_TOOLKIT_VERSION'"
 echo "::notice file=run_toolkit.sh,line=4::INPUTS_TOOLKIT_PATH='$INPUTS_TOOLKIT_PATH'"
@@ -92,7 +91,7 @@ else
 fi
 
 # create issues
-if [ ! -z "${_SARIF2GHI_MOCKING_FOR_DEBUG_}" ]; then
+if [ -n "${_SARIF2GHI_MOCKING_FOR_DEBUG_}" ]; then
 	echo "Mocking create issues due to _SARIF2GHI_MOCKING_FOR_DEBUG_=${_SARIF2GHI_MOCKING_FOR_DEBUG_}"
 fi
 if "${TOOLKIT_PATH}/create_gh_issues.sh" \
