@@ -1,14 +1,12 @@
 # Set the base image to use for subsequent instructions
-FROM alpine:3.20
+FROM python:3-alpine
 
 # Set the working directory inside the container
 WORKDIR /usr/src
 
 # Install python/pip
 ENV PYTHONUNBUFFERED=1
-RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
-RUN apk add --no-cache py3-pip
-RUN pip3 install --no-cache --upgrade pip setuptools
+RUN apk add --update --no-cache python3 py3-pip
 
 # Instsall GitHub Cli
 RUN apk add --no-cache git github-cli
