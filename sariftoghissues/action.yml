@@ -8,7 +8,7 @@ inputs:
     description: 'SARIF-to-GitHub issues tookkit version'
     required: true
     default: 'v0.001'
-  toolkit-directory:
+  toolkit-path:
     description: 'SARIF-to-GitHub issues tookkit directory'
     required: false
     default: '_s2ghi_toolkit_'
@@ -16,12 +16,18 @@ inputs:
     description: 'SARIF-to-GitHub issues tookkit URL'
     required: false
     default: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/ghissues/'
-  # toolkit-tools:
-  #   description: 'SARIF-to-GitHub issues tookkit tools'
-  #   required: false
-  #   default:
-  #     - assemble_gh_issue_data.py
-  #     - gh_issues.sh
+  sarif-data-path:
+    description: 'Directory where the SARIF files are'
+    required: true
+    default: '_s2ghi_/sarif_data'
+  qhelp-root:
+    description: 'Root URL for QHELP'
+    required: false
+    default: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/qhelp'
+  issue-data-path:
+    description: 'Directory where the output issue data will be'
+    required: false
+    default: '_s2ghi_/issue_data'
 
 # Outputs of the action.
 outputs:
@@ -35,9 +41,15 @@ outputs:
 runs:
   using: docker
   image: Dockerfile
-  entrypoint: /download_toolkit.sh
+  entrypoint: /run_toolkit.sh
   env:
     INPUTS_TOOLKIT_VERSION: ${{ inputs.toolkit-version }}
-    INPUTS_TOOLKIT_DIRECTORY: ${{ inputs.toolkit-directory }}
+    INPUTS_TOOLKIT_PATH: ${{ inputs.toolkit-path }}
     INPUTS_TOOLKIT_URL: ${{ inputs.toolkit-url }}
-    # INPUTS_TOOLKIT_TOOLS: ${{ inputs.toolkit-tools }}
+    INPUTS_TOOLKIT_TOOLS: ${{ inputs.toolkit-tools }}
+    REPOSITORY: ${{ github.repository }}
+    SHA: ${{ github.sha }}
+    INPUTS_SARIF_DATA_PATH: ${{ inputs.sarif-data-path }}
+    INPUTS_QHELP_ROOT: ${{ inputs.qhelp-root }}
+    INPUTS_ISSUE_DATA_PATH: ${{ inputs.issue-data-path }}
+
