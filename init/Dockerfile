@@ -6,7 +6,7 @@ WORKDIR /usr/src
 
 # Copy any source file(s) required for the action
 COPY entrypoint.sh /entrypoint.sh
-COPY init/download_toolkit.sh /download_toolkit.sh
+COPY download_toolkit.sh /download_toolkit.sh
 
 # Configure the container to be run as an executable
 ENTRYPOINT ["/entrypoint.sh"]
