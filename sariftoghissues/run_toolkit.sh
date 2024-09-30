@@ -95,7 +95,7 @@ if [ -n "${_SARIF2GHI_MOCKING_FOR_DEBUG_}" ]; then
 	echo "Mocking create issues due to _SARIF2GHI_MOCKING_FOR_DEBUG_=${_SARIF2GHI_MOCKING_FOR_DEBUG_}"
 fi
 ls -l "${TOOLKIT_PATH}"
-if "${TOOLKIT_PATH}/create_gh_issues.sh" \
+if "bash -x ${TOOLKIT_PATH}/create_gh_issues.sh" \
 	"${INPUTS_ISSUE_DATA_PATH}"; then
 	{
 		echo "create-issue-time=$(date)"
