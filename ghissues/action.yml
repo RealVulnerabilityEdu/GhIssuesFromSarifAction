@@ -25,6 +25,6 @@ runs:
     - name: Create GH issues from issue content
       shell: bash
       run: |
-        sariftoissues/create_issues.sh \
+        ghissues/create_issues.sh \
           "${{github.workspace}}/${{inputs.toolkit-path}}" \
           "${{inputs.issue-data-path}}"
