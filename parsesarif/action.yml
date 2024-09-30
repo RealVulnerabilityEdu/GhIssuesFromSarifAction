@@ -37,7 +37,6 @@ runs:
     - name: Generate GH issue content
       shell: bash
       run: |
-        pwd
         parsesarif/parse_sarif.sh \
           "${{github.repository}}" \
           "${{github.sha}}" \
@@ -45,5 +44,3 @@ runs:
           "${{github.workspace}}/${{inputs.toolkit-path}}" \
           "${{inputs.qhelp-root}}" \
           "${{inputs.issue-data-path}}"
-
-
