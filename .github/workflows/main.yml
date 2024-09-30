@@ -69,3 +69,28 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           _SARIF2GHI_MOCKING_FOR_DEBUG_: 1
+  sarif_to_github_issues_standalone:
+    runs-on: ubuntu-latest
+    name: Creating GitHub issues from SARIF files All in One As Standalone Action
+    permissions:
+      # required for all workflows
+      security-events: write
+      # only required for workflows in private repositories
+      actions: read
+      contents: read
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: SARIF-to-GitHub-Issues-Action-All-In-One-Standalone
+        uses: ./sariftoghissues
+        with:
+          toolkit-version: v0.001'
+          sarif-data-path: '${{github.workspace}}/tests/sarif'
+          qhelp-root: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/qhelp'
+          issue-data-path: '_s2ghi_/issue_data'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          _SARIF2GHI_MOCKING_FOR_DEBUG_: 1
+
