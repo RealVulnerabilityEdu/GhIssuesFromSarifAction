@@ -71,8 +71,7 @@ runs:
         fi
 
     - name: Create GH issues from issue content
-      shell: bash
-      run: |
-        sariftoissues/create_issues.sh \
-          "${{github.workspace}}/${{inputs.toolkit-path}}" \
-          "${{inputs.issue-data-path}}"
+      uses: ./ghissues
+      with:
+        issue-data-path: '${{inputs.issue-data-path}}'
+        toolkit-path: '${{github.workspace}}/${{inputs.toolkit-path}}'
