@@ -111,7 +111,7 @@ else
 		echo "create-issue-staus=failure"
 	} >>"$GITHUB_OUTPUT"
 fi
-echo "::notice file=run_toolkit.sh,line=114::completed '${TOOLKIT_PATH}/parse_sarif.sh'"
+echo "::notice file=run_toolkit.sh,line=114::completed '${TOOLKIT_PATH}/create_gh_issues.sh'"
 
 echo "time=$(date)" >>"$GITHUB_OUTPUT"
 echo "::notice file=run_toolkit.sh,line=117::all done"
