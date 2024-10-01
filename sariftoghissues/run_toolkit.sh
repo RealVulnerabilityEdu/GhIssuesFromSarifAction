@@ -1,5 +1,7 @@
 #!/bin/sh -l
 
+git config --global --add safe.directory "$PWD"
+
 echo "::notice file=run_toolkit.sh,line=3::INPUTS_TOOLKIT_VERSION='$INPUTS_TOOLKIT_VERSION'"
 echo "::notice file=run_toolkit.sh,line=4::INPUTS_TOOLKIT_PATH='$INPUTS_TOOLKIT_PATH'"
 echo "::notice file=run_toolkit.sh,line=5::INPUTS_TOOLKIT_URL='$INPUTS_TOOLKIT_URL'"
