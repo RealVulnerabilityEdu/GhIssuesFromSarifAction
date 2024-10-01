@@ -20,7 +20,7 @@ jobs:
       - name: SARIF-to-GitHub-Issues-Action-All-In-One
         uses: ./sariftoghissues
         with:
-          toolkit-version: v0.001'
+          toolkit-version: 'v0.001.alpha'
           sarif-data-path: '${{github.workspace}}/tests/sarif'
           qhelp-root: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/qhelp'
           issue-data-path: '_s2ghi_/issue_data'
