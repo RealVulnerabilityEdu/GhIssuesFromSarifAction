@@ -40,7 +40,7 @@ fi
 # Download the toolkit files
 while read -r FILE; do
 	FILENAME=$(basename "${FILE}")
-	SOURCE_FILE="${INPUTS_TOOLKIT_URL}/${$INPUTS_TOOLKIT_VERSION}/${FILENAME}"
+	SOURCE_FILE="${INPUTS_TOOLKIT_URL}/${INPUTS_TOOLKIT_VERSION}/${FILENAME}"
 	TOOLKIT_FILE="${TOOLKIT_PATH}/${FILENAME}"
 	if ! wget "${SOURCE_FILE}" -O "${TOOLKIT_FILE}"; then
 		echo "::error file=run_toolkit.sh,line=44::Failed to download $SOURCE_FILE"
