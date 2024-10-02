@@ -9,6 +9,7 @@ repository. We tested the following version combinations:
 | Sarif-to-Issues Action (this action) | Saris-to-Issues toolkit |
 | ------------------------------------ | ----------------------- |
 | v0.005.alpha                         | v0.001.alpha            |
+| v0.006.alpha                         | v0.003.alpha            |
 
 ## References
 

@@ -102,10 +102,10 @@ jobs:
           output: '${{github.workspace}}/sarif_results'
 
       - id: sarif-to-issues
-        name: create-issues-for-learning
+        name: Create secure programming learning issues
         uses: huichen-cs/GhIssuesFromSarifAction/sariftoghissues@v0.005.alpha
         with:
-          toolkit-version: 'v0.001.alpha'
+          toolkit-version: 'v0.003.alpha'
           sarif-data-path: '${{github.workspace}}/sarif_results'
           qhelp-root: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/qhelp'
           issue-data-path: '_s2ghi_/issue_data'
