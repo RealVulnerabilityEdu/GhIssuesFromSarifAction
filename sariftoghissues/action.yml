@@ -28,6 +28,10 @@ inputs:
     description: 'Directory where the output issue data will be'
     required: false
     default: '_s2ghi_/issue_data'
+  issue-body-template:
+    description: 'Template for the issue body'
+    required: false
+    default: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/ghissues/issue_body_template.md'
   repository:
     description: 'Repository name (ower/reponame)'
     required: true
@@ -58,3 +62,4 @@ runs:
     INPUTS_SARIF_DATA_PATH: ${{ inputs.sarif-data-path }}
     INPUTS_QHELP_ROOT: ${{ inputs.qhelp-root }}
     INPUTS_ISSUE_DATA_PATH: ${{ inputs.issue-data-path }}
+    INPUTS_ISSUE_BODY_TEMPLATE: ${{ inputs.issue-body-template }}
