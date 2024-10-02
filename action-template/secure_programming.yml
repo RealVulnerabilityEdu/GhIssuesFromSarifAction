@@ -109,6 +109,7 @@ jobs:
           sarif-data-path: '${{github.workspace}}/sarif_results'
           qhelp-root: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/qhelp'
           issue-data-path: '_s2ghi_/issue_data'
+          issue_body_template: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/ghissues/issue_body_template.md'
           repository: '${{github.repository}}'
           sha: '${{github.sha}}'
         env:
