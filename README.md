@@ -11,6 +11,7 @@ combinations:
 | ------------------------------------ | ----------------------- |
 | v0.005.alpha                         | v0.001.alpha            |
 | v0.006.alpha                         | v0.003.alpha            |
+| v0.007.alpha                         | v0.003.alpha            |
 
 ## References
 
