@@ -17,6 +17,8 @@ on:
   pull_request:
     branches: ['main']
 
+permissions: read-all
+
 jobs:
   check:
     # check existence of source code; other CodeQL would fail, which is not good for
@@ -25,28 +27,27 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       description: 'Check if Python code exists'
-      files-exist: ${{ steps.check-code-existence.outputs.files-exist }}
+      files-exist: ${{ steps.check-code-existence.outputs.FILES_EXIST }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
       - id: check-code-existence
         name: Check if Python code exists
+        shell: bash
         run: |
           n_files=$(find . -type f -name "*.py" | wc -l)
           echo "Number of Python files: $n_files"
-          if [ $n_files -eq 0 ]; then
+          if [ "${n_files}" -eq 0 ]; then
+            echo "FILES_EXIST=no" >> "${GITHUB_OUTPUT}"
             echo "No Python code found. Commit it to your repository if you have Python code. Happy learning!"
-            echo "files-exist='false'" >> ${GITHUB_OUTPUT}
-            exit 0
-          else:
+          else
+            echo "FILES_EXIST=yes" >> "${GITHUB_OUTPUT}"
             echo "Python code found. Let's analyze it!"
-            echo "files-exist='true'" >> ${GITHUB_OUTPUT}
-            exit 0
           fi
   analyze:
     name: Analyze (${{ matrix.language }})
     needs: check
-    if: needs.check.outputs.files-exist == 'true'
+    if: needs.check.outputs.files-exist == 'yes'
     # Runner size impacts CodeQL analysis time. To learn more, please see:
     #   - https://gh.io/recommended-hardware-resources-for-running-codeql
     #   - https://gh.io/supported-runners-and-hardware-resources
