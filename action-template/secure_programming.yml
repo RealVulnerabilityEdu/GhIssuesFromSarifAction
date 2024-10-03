@@ -18,8 +18,35 @@ on:
     branches: ['main']
 
 jobs:
+  check:
+    # check existence of source code; other CodeQL would fail, which is not good for
+    # the learning experience we design because it can confuse the learners.
+    name: Check if Python code exists
+    runs-on: ubuntu-latest
+    outputs:
+      description: 'Check if Python code exists'
+      files-exist: ${{ steps.check-code-existence.outputs.files-exist }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - id: check-code-existence
+        name: Check if Python code exists
+        run: |
+          n_files=$(find . -type f -name "*.py" | wc -l)
+          echo "Number of Python files: $n_files"
+          if [ $n_files -eq 0 ]; then
+            echo "No Python code found. Commit it to your repository if you have Python code. Happy learning!"
+            echo "files-exist='false'" >> ${GITHUB_OUTPUT}
+            exit 0
+          else:
+            echo "Python code found. Let's analyze it!"
+            echo "files-exist='true'" >> ${GITHUB_OUTPUT}
+            exit 0
+          fi
   analyze:
     name: Analyze (${{ matrix.language }})
+    needs: check
+    if: needs.check.outputs.files-exist == 'true'
     # Runner size impacts CodeQL analysis time. To learn more, please see:
     #   - https://gh.io/recommended-hardware-resources-for-running-codeql
     #   - https://gh.io/supported-runners-and-hardware-resources
@@ -103,7 +130,7 @@ jobs:
 
       - id: sarif-to-issues
         name: Create secure programming learning issues
-        uses: RealVulnerabilityEdu/GhIssuesFromSarifAction/sariftoghissues@v0.006.alpha
+        uses: RealVulnerabilityEdu/GhIssuesFromSarifAction/sariftoghissues@v0.007.alpha
         with:
           toolkit-version: 'v0.003.alpha'
           sarif-data-path: '${{github.workspace}}/sarif_results'
