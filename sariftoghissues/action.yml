@@ -15,7 +15,7 @@ inputs:
   toolkit-url:
     description: 'SARIF-to-GitHub issues tookkit URL'
     required: false
-    default: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/ghissues/'
+    default: 'https://realvulnerabilityedu.github.io/download/software/release/ghissues'
   sarif-data-path:
     description: 'Directory where the SARIF files are'
     required: true
@@ -23,7 +23,7 @@ inputs:
   qhelp-root:
     description: 'Root URL for QHELP'
     required: false
-    default: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/qhelp'
+    default: 'https://realvulnerabilityedu.github.io/download/software/release/qhelp'
   issue-data-path:
     description: 'Directory where the output issue data will be'
     required: false
@@ -31,7 +31,7 @@ inputs:
   issue-body-template:
     description: 'Template for the issue body'
     required: false
-    default: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/ghissues/issue_body_template.md'
+    default: 'https://realvulnerabilityedu.github.io/download/software/release/ghissues/issue_body_template.md'
   repository:
     description: 'Repository name (ower/reponame)'
     required: true

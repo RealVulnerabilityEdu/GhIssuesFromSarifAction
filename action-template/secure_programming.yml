@@ -103,13 +103,14 @@ jobs:
 
       - id: sarif-to-issues
         name: Create secure programming learning issues
-        uses: huichen-cs/GhIssuesFromSarifAction/sariftoghissues@v0.005.alpha
+        uses: RealVulnerabilityEdu/GhIssuesFromSarifAction/sariftoghissues@v0.006.alpha
         with:
           toolkit-version: 'v0.003.alpha'
+          toolkit-url: 'https://realvulnerabilityedu.github.io/download/software/release/ghissues'
           sarif-data-path: '${{github.workspace}}/sarif_results'
-          qhelp-root: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/qhelp'
+          qhelp-root: 'https://realvulnerabilityedu.github.io/download/software/release/qhelp'
           issue-data-path: '_s2ghi_/issue_data'
-          issue_body_template: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/ghissues/issue_body_template.md'
+          issue-body-template: 'http://www.sci.brooklyn.cuny.edu/~chen/uploads/research/ghissues/issue_body_template.md'
           repository: '${{github.repository}}'
           sha: '${{github.sha}}'
         env:
